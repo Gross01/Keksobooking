@@ -1028,3 +1028,9 @@ fieldset {
 .hidden {
   display: none;
 }
+
+.pristine-error {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
