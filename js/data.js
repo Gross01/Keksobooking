@@ -19,17 +19,19 @@ const photos = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpghttps://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'
 ];
 
-const locationLat = getRandomPositiveFloat(35.65, 35.7, 5);
-const locationLgn = getRandomPositiveFloat(139.7, 139.8, 5);
 
 function createSimilarAd () {
+
+  const locationLat = getRandomPositiveFloat(35.65, 35.7, 5);
+  const locationLng = getRandomPositiveFloat(139.7, 139.8, 5);
+
   return {
     author: {
       avatar: `img/avatars/user${getRandomIntegralDigital()}.png`
     },
     offer: {
       title: getRandomArrayElement(titles),
-      adress: `${locationLat}, ${locationLgn}`,
+      adress: `${locationLat}, ${locationLng}`,
       price: Number(getRandomPositiveFloat(1000, 100000, 0)),
       type: getRandomArrayElement(types),
       rooms: Number(getRandomPositiveFloat(1, 10, 0)),
@@ -42,7 +44,7 @@ function createSimilarAd () {
     },
     location: {
       lat: Number(locationLat),
-      lgn: Number(locationLgn)
+      lng: Number(locationLng)
     }
   };
 }

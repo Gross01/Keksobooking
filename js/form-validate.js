@@ -97,13 +97,13 @@ function formValidate () {
   pristine.addValidator(
     timeInSelect,
     timeCheckValidate,
-    'Время выезда и заезда должны быть одинаковыми'
+    'Время выезда и заезда должно быть одинаковым'
   );
 
   pristine.addValidator(
     timeOutSelect,
     timeCheckValidate,
-    'Время выезда и заезда должны быть одинаковыми'
+    'Время выезда и заезда должно быть одинаковым'
   );
 
   pristine.addValidator(

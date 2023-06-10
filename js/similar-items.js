@@ -19,6 +19,11 @@ const createPopup = function (element, data) {
     const popupTitle = popup.querySelector('.popup__title');
     popupTitle.textContent = data[i].offer.title;
 
+    const popupLat = popup.querySelector('.popup__lat');
+    const popupLng = popup.querySelector('.popup__lng');
+    popupLat.textContent = data[i].location.lat;
+    popupLng.textContent = data[i].location.lng;
+
     const popupAddress = popup.querySelector('.popup__text--address');
     popupAddress.textContent = data[i].offer.adress;
 
@@ -53,6 +58,7 @@ const createPopup = function (element, data) {
 
     data[i].offer.photos.forEach((src) => {
       const image = document.createElement('img');
+      image.classList.add('popup__photo');
       image.src = src;
       image.alt = data[i].offer.description;
       popupPhotos.append(image);
@@ -69,4 +75,5 @@ const createPopup = function (element, data) {
 const popups = createPopup(templatePopup, similarAds);
 
 export {popups};
+
 
