@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="leaflet/leaflet.css">
+  <link rel="stylesheet" href="nouislider/nouislider.css">
   <title>Кексобукинг</title>
 </head>
 <body>
@@ -218,8 +219,8 @@
       <div class="popup__photos">
         <img src="" class="popup__photo" width="45" height="40" alt="Фотография жилья">
       </div>
-      <span class="popup__lat" style="display: none;"></span>
-      <span class="popup__lng" style="display: none;"></span>
+      <span class="popup__lat visually-hidden"></span>
+      <span class="popup__lng visually-hidden"></span>
     </article>
   </template>
 
@@ -237,8 +238,8 @@
       <button type="button" class="error__button">Попробовать снова</button>
     </div>
   </template>
-  <script type="module" src="js/main.js"></script>
-    <script src="pristine/pristine.min.js"></script>
+  <script src="nouislider/nouislider.js"></script>
+  <script src="pristine/pristine.min.js"></script>
   <script src="leaflet/leaflet.js"></script>
-</body>
+  <script type="module" src="js/main.js"></script>
 </html>

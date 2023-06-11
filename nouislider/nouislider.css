@@ -303,3 +303,14 @@
    top: auto;
    right: 28px;
  }
+
+ .ad-form__slider:not(#fake-id) .noUi-handle {
+  cursor: pointer;
+  background-color: lightgrey;
+  width: 18px;
+  height: 18px;
+ }
+
+ .ad-form__slider.noUi-target:not(#fake-id) {
+  height: 8px;
+ }

@@ -4,6 +4,8 @@ import {popups} from './similar-items.js';
 const addressInput = document.querySelector('#address');
 const resetButton = document.querySelector('.ad-form__reset');
 
+const mainLat = 35.681729;
+const mainLng = 139.753927;
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -11,8 +13,8 @@ const map = L.map('map-canvas')
   })
 
   .setView({
-    lat: 35.681729,
-    lng: 139.753927,
+    lat: mainLat,
+    lng: mainLng,
   }, 13);
 
 const mainPinIcon = L.icon({
@@ -30,8 +32,8 @@ L.tileLayer(
 
 const mainMarker = L.marker(
   {
-    lat: 35.681729,
-    lng: 139.753927,
+    lat: mainLat,
+    lng: mainLng,
   },
   {
     draggable: true,
@@ -74,13 +76,13 @@ popups.forEach((popup) => {
 
 resetButton.addEventListener('click', () => {
   mainMarker.setLatLng({
-    lat: 35.681729,
-    lng: 139.753927,
+    lat: mainLat,
+    lng: mainLng,
   });
 
   map.setView({
-    lat: 35.681729,
-    lng: 139.753927,
+    lat: mainLat,
+    lng: mainLng,
   }, 13);
 });
 

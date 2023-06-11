@@ -432,6 +432,12 @@ fieldset {
   display: none;
 }
 
+.ad-form__slider {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 20px;
+}
+
 .features legend {
   padding-bottom: 5px;
 }
