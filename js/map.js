@@ -1,5 +1,6 @@
 import {formActive} from './form.js';
-import {popups} from './similar-items.js';
+import {createPopup, templatePopup} from './similar-items.js';
+import {getData} from './api.js';
 
 const addressInput = document.querySelector('#address');
 const resetButton = document.querySelector('.ad-form__reset');
@@ -55,23 +56,27 @@ const icon = L.icon({
   iconAnchor: [20, 40],
 });
 
-popups.forEach((popup) => {
-  const lat = (popup.querySelector('.popup__lat').textContent);
-  const lng = (popup.querySelector('.popup__lng').textContent);
+getData((data) => {
+  const newData = data.slice(0, 10);
+  const popups = createPopup(templatePopup, newData);
+  popups.forEach((popup) => {
+    const lat = (popup.querySelector('.popup__lat').textContent);
+    const lng = (popup.querySelector('.popup__lng').textContent);
 
-  const marker = L.marker(
-    {
-      lat,
-      lng,
-    },
-    {
-      icon,
-    },
-  );
+    const marker = L.marker(
+      {
+        lat,
+        lng,
+      },
+      {
+        icon,
+      },
+    );
 
-  marker
-    .addTo(map)
-    .bindPopup(popup);
+    marker
+      .addTo(map)
+      .bindPopup(popup);
+  });
 });
 
 resetButton.addEventListener('click', () => {

@@ -39,16 +39,18 @@ const createPopup = function (element, data) {
     const popupCapacity = popup.querySelector('.popup__text--capacity');
     popupCapacity.textContent = `${data[i].offer.rooms  } комнаты для ${  data[i].offer.guests  } гостей`;
 
-    const popupFeatures = popup.querySelectorAll('.popup__feature');
-    const modifiers = data[i].offer.features.map((feature) => `popup__feature--${  feature}`);
+    const popupFeatures = popup.querySelector('.popup__features');
 
-    popupFeatures.forEach((featureElement) => {
-      const modifier = featureElement.classList[1];
+    if (data[i].offer.features) {
+      popupFeatures.innerHTML = '';
 
-      if (!modifiers.includes(modifier)) {
-        featureElement.remove();
-      }
-    });
+      data[i].offer.features.forEach((feature) => {
+        const featureElement = document.createElement('li');
+        featureElement.classList.add('popup__feature');
+        featureElement.classList.add(`popup__feature--${feature}`);
+        popupFeatures.append(featureElement);
+      });
+    }
 
     const popupDescription = popup.querySelector('.popup__description');
     popupDescription.textContent = data[i].offer.description;
@@ -72,8 +74,6 @@ const createPopup = function (element, data) {
   return popupsArray;
 };
 
-const popups = createPopup(templatePopup, similarAds);
-
-export {popups};
+export {createPopup, templatePopup};
 
 

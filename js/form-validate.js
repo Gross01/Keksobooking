@@ -1,3 +1,5 @@
+const formTitle = document.querySelector('#title');
+const addressInput = document.querySelector('#address');
 const form = document.querySelector('.ad-form');
 const price = form.querySelector('#price');
 const typesSelect = document.querySelector('#type');
@@ -5,6 +7,10 @@ const timeInSelect = document.querySelector('#timein');
 const timeOutSelect = document.querySelector('#timeout');
 const rooms = form.querySelector('#room_number');
 const capacity = form.querySelector('#capacity');
+const featureCheckboxes = document.querySelectorAll('.features__checkbox');
+const formDescription = form.querySelector('#description');
+const succesMessage = document.querySelector('.success');
+const errorMessage = document.querySelector('.error');
 
 const typesPrices = {
   'flat': '1000',
@@ -37,11 +43,6 @@ function getMessageForPriceValidate () {
     }
   }
 }
-
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
-});
 
 function getCorrectPlacehoder () {
   for (let i = 0; i < types.length; i++) {
@@ -92,6 +93,39 @@ function getRoomsValidateMessage () {
     return 'В такой квартире гояти не нужны';
   }
 }
+
+const clearForm = () => {
+  formTitle.value = '';
+  addressInput.value = '35.68173, 139.75393';
+  typesSelect.value = 'flat';
+  price.value = '0';
+  rooms.value = '1';
+  capacity.value = '3';
+  timeInSelect.value = '12:00';
+  timeOutSelect.value = '12:00';
+  featureCheckboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+  formDescription.value = '';
+};
+
+form.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  const isValid = pristine.validate();
+
+  if (isValid) {
+    fetch('https://25.javascript.pages.academy/keksobooking', {
+      method: 'POST',
+      body: new FormData(evt.target)
+    }).then(() => {
+      clearForm();
+      succesMessage.classList.remove('visually-hidden');
+    }).catch(() => {
+      errorMessage.classList.remove('visually-hidden')
+    });
+  }
+});
 
 function formValidate () {
   pristine.addValidator(

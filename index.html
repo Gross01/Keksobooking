@@ -196,7 +196,14 @@
       <li><a href="https://vk.com/htmlacademy" class="contacts__link contacts__link--vk">VK</a></li>
     </ul>
   </footer>
-
+  <div class="success visually-hidden">
+    <p class="success__message">Ваше объявление<br>успешно размещено!</p>
+  </div>
+  <div class="error visually-hidden">
+    <p class="error__message">Ошибка размещения объявления</p>
+    <button type="button" class="error__button">Попробовать снова</button>
+  </div>
+</body>
   <!-- Карточка объявления -->
   <template id="card">
     <article class="popup">
@@ -223,23 +230,9 @@
       <span class="popup__lng visually-hidden"></span>
     </article>
   </template>
-
-  <!-- Сообщение об успешном создании объявления -->
-  <template id="success">
-    <div class="success">
-      <p class="success__message">Ваше объявление<br>успешно размещено!</p>
-    </div>
-  </template>
-
-  <!-- Сообщение об ошибке создания объявления -->
-  <template id="error">
-    <div class="error">
-      <p class="error__message">Ошибка размещения объявления</p>
-      <button type="button" class="error__button">Попробовать снова</button>
-    </div>
-  </template>
   <script src="nouislider/nouislider.js"></script>
   <script src="pristine/pristine.min.js"></script>
   <script src="leaflet/leaflet.js"></script>
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/api.js"></script>
 </html>
