@@ -1,5 +1,3 @@
-import {similarAds} from './data.js';
-
 const template = document.querySelector('#card').content;
 const templatePopup = template.querySelector('article');
 
@@ -13,7 +11,7 @@ const translate = {
 
 const createPopup = function (element, data) {
   const popupsArray = [];
-  for (let i = 0; i < similarAds.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     const popup = element.cloneNode(true);
 
     const popupTitle = popup.querySelector('.popup__title');
@@ -58,13 +56,15 @@ const createPopup = function (element, data) {
     const popupPhotos = popup.querySelector('.popup__photos');
     popupPhotos.removeChild(popupPhotos.children[0]);
 
-    data[i].offer.photos.forEach((src) => {
-      const image = document.createElement('img');
-      image.classList.add('popup__photo');
-      image.src = src;
-      image.alt = data[i].offer.description;
-      popupPhotos.append(image);
-    });
+    if (data[i].offer.photos) {
+      data[i].offer.photos.forEach((src) => {
+        const image = document.createElement('img');
+        image.classList.add('popup__photo');
+        image.src = src;
+        image.alt = data[i].offer.description;
+        popupPhotos.append(image);
+      });
+    }
 
     const popupAvatar = popup.querySelector('.popup__avatar');
     popupAvatar.src = data[i].author.avatar;
