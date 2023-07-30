@@ -1,5 +1,4 @@
 import {createMarkers, clearLayers, layerGroup} from "./map.js";
-import {debounce} from './util.js';
 
 const housingType = document.querySelector('#housing-type');
 const housingPrice = document.querySelector('#housing-price');
@@ -77,34 +76,24 @@ const filterMarkers = (data) => {
   return result;
 };
 
-const getFilterClickFunction = (data) => {
+const filterClickFunction = (data) => {
   layerGroup.clearLayers();
   const filteredData = filterMarkers(data);
   createMarkers(filteredData);
 };
 
-const getNewFilteredMarkers = (data) => {
-  housingType.addEventListener('change', () => {
-    getFilterClickFunction(data);
-  });
+const getNewFilteredMarkers = (clickFunction, data) => {
+  housingType.addEventListener('change', () => clickFunction(data));
 
-  housingPrice.addEventListener('change', () => {
-    getFilterClickFunction(data);
-  });
+  housingPrice.addEventListener('change', () => clickFunction(data));
 
-  housingRooms.addEventListener('change', () => {
-    getFilterClickFunction(data);
-  });
+  housingRooms.addEventListener('change', () => clickFunction(data));
 
-  housingGuests.addEventListener('change', () => {
-    getFilterClickFunction(data);
-  });
+  housingGuests.addEventListener('change', () => clickFunction(data));
 
   features.forEach((feature) => {
-    feature.addEventListener('click', () => {
-      getFilterClickFunction(data);
-    });
+    feature.addEventListener('click', () => clickFunction(data));
   });
 };
 
-export {getNewFilteredMarkers};
+export {getNewFilteredMarkers, filterClickFunction};
