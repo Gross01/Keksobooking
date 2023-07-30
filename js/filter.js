@@ -1,4 +1,5 @@
-import {createMarkers, clearLayers, layerGroup} from "./map.js";
+// eslint-disable-next-line no-unused-vars
+import {createMarkers, clearLayers, layerGroup} from './map.js';
 
 const housingType = document.querySelector('#housing-type');
 const housingPrice = document.querySelector('#housing-price');

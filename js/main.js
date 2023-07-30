@@ -5,6 +5,7 @@ import {getNewFilteredMarkers, filterClickFunction} from './filter.js';
 import {debounce} from './util.js';
 import './slider.js';
 import './submit-messages.js';
+import './photos.js';
 
 formValidate();
 
@@ -15,7 +16,8 @@ getData((data) => {
   getNewFilteredMarkers(
     debounce(
       filterClickFunction,
-      RENDER_DELAY),
+      RENDER_DELAY
+    ),
     data
   );
 });
